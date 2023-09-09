@@ -15,3 +15,15 @@ test-contracts-offline:
 
 test-contracts-online:
 	forge test --match-test testFork -vvvvv
+
+
+# Scripts
+
+deploy-BQ-weather:
+	forge script script/Deploy.BQWeather.s.sol:DeployScript --rpc-url ${RPC_URL} --etherscan-api-key ${EXPLORER_KEY} --broadcast --verify -vvvv --ffi
+
+set-functions-consumer:
+	forge script script/Set.FunctionsConsumer.s.sol:SetFunctionsConsumerScript --rpc-url ${RPC_URL} --broadcast -vvvv --ffi
+
+set-lambda:
+	forge script script/Set.Lambda.s.sol:SetLambdaScript --rpc-url ${RPC_URL} --broadcast -vvvv --ffi

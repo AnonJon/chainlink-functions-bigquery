@@ -1,0 +1,8 @@
+{
+  "subId": 393,
+  "version": "v0.0.1",
+  "functionsRegistry": "0xEe9Bf52E5Ea228404bB54BCFbbDa8c21131b9039",
+  "oracle": "0xeA6721aC65BCeD841B8ec3fc5fEdeA6141a0aDE4",
+  "gasLimit": 200000,
+  "BQWeather": "0xFf77DD353A6BE084c35d01617E8D2e94688674c7"
+}
