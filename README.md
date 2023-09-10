@@ -10,6 +10,8 @@ Set environment variables. See `.env.example`
 
 A service account is needed to use the googles BigQuery API even if it's a public dataset. The steps below will help you set one up.
 
+#### Generate JSON keys
+
 1. **Go to the Google Cloud Console**: [https://console.cloud.google.com/](https://console.cloud.google.com/)
 2. **Select your project**: From the top dropdown, choose the project in which you want to create the service account.
 3. **Navigate to IAM & Admin**: In the left-hand navigation pane, click on "IAM & Admin", then select "Service accounts".
@@ -22,9 +24,45 @@ A service account is needed to use the googles BigQuery API even if it's a publi
 7. **Generate a key**: After roles have been assigned, you'll have the option to generate a JSON key for the service account, which can be used for authentication in applications and scripts.
 8. Click "Done".
 
+#### JSON keys
+
+You should now have a JSON file like the example below
+
+```json
+{
+  "type": "service_account",
+  "project_id": "PROJECT_ID",
+  "private_key_id": "JF9883U948U3FJIJSOIFJSID",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nPRIVATE_KEY\n-----END PRIVATE KEY-----\n",
+  "client_email": "PROJECT_ID@PROJECT_ID.iam.gserviceaccount.com",
+  "client_id": "34534534535",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/PROJECT_ID%40PROJECT_ID.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+```
+
+You will be using the following keys as secrets in the next section for your Chainlink Function `project_id`, `private_key`, `client_email`
+
 ### Off-chain Secrets
 
 The contract is utilizing off-chain secrets to keep data more secure. The steps below will help you create and set the secrets in your contract.
+
+#### Build Off-chain Secrets
+
+#### Create Gist
+
+With your generated `offchain-secrets.json` file you can now create a Gist to host your encrypted secrets. Run the following Github CLI commands to create your Gist.
+
+```bash
+gh gist create offchain-secrets.json
+```
+
+#### Encrypt Gist
+
+The last step is to now encrypt the Gist for storing on the blockchain.
 
 ## Deploy
 

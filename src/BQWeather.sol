@@ -3,8 +3,9 @@ pragma solidity ^0.8.13;
 
 import {FunctionsClient, Functions} from "@chainlink/src/v0.8/functions/dev/0_0_0/FunctionsClient.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {IBigQueryWeather} from "./interfaces/IBQWeather.sol";
 
-contract BigQueryWeather is FunctionsClient, Ownable {
+contract BigQueryWeather is IBigQueryWeather, FunctionsClient, Ownable {
     using Functions for Functions.Request;
 
     bytes public latestError;
@@ -61,5 +62,9 @@ contract BigQueryWeather is FunctionsClient, Ownable {
 
     function setSubscriptionId(uint64 _subId) external onlyOwner {
         subId = _subId;
+    }
+
+    function updateOracleAddress(address oracle) public onlyOwner {
+        setOracle(oracle);
     }
 }

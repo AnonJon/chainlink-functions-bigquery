@@ -10,3 +10,6 @@
 [submodule "lib/chainlink"]
 	path = lib/chainlink
 	url = https://github.com/smartcontractkit/chainlink
+[submodule "chainlink-functions"]
+	path = chainlink-functions
+	url = https://github.com/smartcontractkit/functions-google-bigquery.git
