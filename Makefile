@@ -4,7 +4,7 @@ init-install:
 	forge install Openzeppelin/openzeppelin-contracts foundry-rs/forge-std Openzeppelin/openzeppelin-contracts-upgradeable smartcontractkit/chainlink
 
 install:
-	forge install && cd chainlink-functions && npm install
+	forge install && yarn && cd chainlink-functions && npm install
 
 # tests
 tests:
