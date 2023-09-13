@@ -14,4 +14,4 @@ optimizer_runs = 2_000
 fs_permissions = [{ access = "read", path = "./" }]
 
 [rpc_endpoints]
-mumbai = "${MUMBAI_RPC_URL}"
+mumbai = "${POLYGON_MUMBAI_RPC_URL}"

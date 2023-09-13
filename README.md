@@ -6,6 +6,12 @@
 
 Set environment variables. See `.env.example`
 
+### Install Dependencies
+
+```bash
+make install
+```
+
 ### GCloud
 
 A service account is needed to use the googles BigQuery API even if it's a public dataset. The steps below will help you set one up.
@@ -52,17 +58,31 @@ The contract is utilizing off-chain secrets to keep data more secure. The steps 
 
 #### Build Off-chain Secrets
 
+Remember to set your env varibles from the generated gcloud json. See `.env.example` for examples.
+
+```bash
+make build-offchain-secrets
+```
+
 #### Create Gist
 
 With your generated `offchain-secrets.json` file you can now create a Gist to host your encrypted secrets. Run the following Github CLI commands to create your Gist.
 
+Before running the command, make sure you have the `Github CLI` tool installed.
+
 ```bash
-gh gist create offchain-secrets.json
+make create-gist
 ```
 
 #### Encrypt Gist
 
 The last step is to now encrypt the Gist for storing on the blockchain.
+
+```bash
+make encrypt-gist
+```
+
+Enter your Gist URL and a hex string will generated. This string will be whats added to your contract as your secrets for your Function.
 
 ## Deploy
 
