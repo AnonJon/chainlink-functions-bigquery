@@ -93,3 +93,13 @@ make deploy-BQ-weather
 ## Examples
 
 The contract has one function `requestWeather()` which is your entry point to retrieving data from BigQuery. It takes in one argument `_query` which is the SQL query you will use to retrieve data from the tables of your choice. To examine the data and test out queries before running it live, visit [https://console.cloud.google.com/marketplace/product/noaa-public/gsod](https://console.cloud.google.com/marketplace/product/noaa-public/gsod)
+
+Try passing in the following query to the `requestWeather()` function.
+
+```sql
+SELECT * FROM bigquery-public-data.noaa_gsod.gsod2023 where stn = '081810' order by date desc limit 1
+```
+
+This will get the latest temp data for the station `081810` which is the station for the city of `Barcelona`.
+
+Call the `getCurrentTemperature()` function to get the current temperature from the returned data in wei.

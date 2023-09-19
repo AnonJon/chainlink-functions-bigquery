@@ -38,3 +38,6 @@ set-functions-consumer:
 
 set-lambda:
 	forge script script/Set.Lambda.s.sol:SetLambdaScript --rpc-url ${RPC_URL} --broadcast -vvvv --ffi
+
+get-current-weather:
+	forge script script/GetCurrentWeather.s.sol:GetCurrentWeatherScript --rpc-url ${RPC_URL} --broadcast -vvvv --ffi

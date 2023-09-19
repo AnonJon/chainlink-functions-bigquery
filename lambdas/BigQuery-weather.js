@@ -78,14 +78,15 @@ const executeQuery = async (query) => {
   }
 
   const rows = response.data.rows;
+
   let answer;
   try {
-    answer = parseInt(rows[0].f[0].v);
+    answer = parseFloat(rows[0].f[6].v); // grab the temp from the response
   } catch (error) {
     throw new Error(`Error processing query result: ${error.message}`);
   }
 
-  return Buffer.concat([Functions.encodeUint256(answer)]);
+  return Buffer.concat([Functions.encodeUint256(BigInt(answer * 10 ** 18))]);
 };
 
 const query = args[0];

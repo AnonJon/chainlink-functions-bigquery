@@ -11,7 +11,7 @@ contract BigQueryWeather is IBigQueryWeather, FunctionsClient, Ownable {
     bytes public latestError;
     bytes public lambdaFunction;
     bytes public lambdaSecrets;
-    bytes public res;
+    bytes currentWeather;
     uint32 public gasLimit;
     uint64 private subId;
     bytes32 public latestRequestId;
@@ -42,9 +42,17 @@ contract BigQueryWeather is IBigQueryWeather, FunctionsClient, Ownable {
         latestRequestId = sendRequest(req, subId, gasLimit);
     }
 
+    /**
+     * @notice Returns the current temperature in wei
+     */
+    function getCurrentTemperature() external view returns (uint256) {
+        uint256 temp = abi.decode(currentWeather, (uint256));
+        return temp;
+    }
+
     function fulfillRequest(bytes32 requestId, bytes memory response, bytes memory err) internal override {
         latestError = err;
-        res = response;
+        currentWeather = response;
         emit OCRResponse(requestId, response, err);
     }
 
