@@ -18,7 +18,7 @@ contract GetCurrentWeatherScript is Utils {
         vm.startBroadcast(deployerPrivateKey);
         bqweather = BigQueryWeather(getValue("BQWeather"));
         bqweather.requestWeather(
-            "SELECT * FROM bigquery-public-data.noaa_gsod.gsod2023 where stn = '081810' order by date desc limit 1'"
+            "SELECT * FROM bigquery-public-data.noaa_gsod.gsod2023 where stn = '081810' order by date desc limit 1"
         );
 
         vm.stopBroadcast();
